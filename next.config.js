@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-
-It looks like you want to create variables in a JavaScript or Node.js environment based on the names provided. If you're using Node.js, you can use the following code to create variables based on the given pattern:
-
-javascript
-Copy code
 const variables = [
   "POSTGRES_URL",
   "POSTGRES_PRISMA_URL",
@@ -12,7 +7,7 @@ const variables = [
   "POSTGRES_USER",
   "POSTGRES_HOST",
   "POSTGRES_PASSWORD",
-  "POSTGRES_DATABASE"
+  "POSTGRES_DATABASE",
 ];
 
 const envVariables = {};
@@ -24,7 +19,7 @@ variables.forEach(variable => {
 const nextConfig = {
   env: {
     API_URL: process.env.NEXT_PUBLIC_API_URL,
-    ...envVariables
+    ...envVariables,
   },
 };
 
