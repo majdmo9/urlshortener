@@ -5,7 +5,7 @@ import { ShortedUrlResponseType } from "types/shortUrlType";
 import Results from "./Results";
 
 const createUrl = async (url: string): Promise<ShortedUrlResponseType | ""> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/generate`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/generate`, {
     method: "POST",
     body: JSON.stringify({ url }),
   });
@@ -55,7 +55,7 @@ const MainForm = () => {
     const fetchClicks = async () => {
       let clicksArr = [];
       for (const url of shortedUrls) {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/analytics/${url?.code}`, { method: "GET" });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/analytics/${url?.code}`, { method: "GET" });
         clicksArr.push({ code: url?.code, clicks: (await res.json()).data.clicked });
       }
       setClicks(clicksArr as any);
