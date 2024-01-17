@@ -63,7 +63,6 @@ const MainForm = () => {
     };
     fetchClicks();
   }, [shortedUrls, urlClicked]);
-  console.log(process.env.NEXT_PUBLIC_API_URL);
 
   return (
     <div className="py-24 min-h-full w-full flex flex-col justify-start items-center">
