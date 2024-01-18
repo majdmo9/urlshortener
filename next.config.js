@@ -1,25 +1,25 @@
 /** @type {import('next').NextConfig} */
 
-const variables = [
-  "POSTGRES_URL",
-  "POSTGRES_PRISMA_URL",
-  "POSTGRES_URL_NON_POOLING",
-  "POSTGRES_USER",
-  "POSTGRES_HOST",
-  "POSTGRES_PASSWORD",
-  "POSTGRES_DATABASE",
-];
+// const variables = [
+//   "POSTGRES_URL",
+//   "POSTGRES_PRISMA_URL",
+//   "POSTGRES_URL_NON_POOLING",
+//   "POSTGRES_USER",
+//   "POSTGRES_HOST",
+//   "POSTGRES_PASSWORD",
+//   "POSTGRES_DATABASE",
+// ];
 
-const envVariables = {};
+// const envVariables = {};
 
-variables.forEach(variable => {
-  envVariables[variable] = process.env[variable];
-});
+// variables.forEach(variable => {
+//   envVariables[variable] = process.env[variable];
+// });
 
 const nextConfig = {
   env: {
-    API_URL: process.env.NEXT_PUBLIC_API_URL,
-    ...envVariables,
+    // API_URL: process.env.NEXT_PUBLIC__API_URL,
+    // ...envVariables,
   },
 };
 
