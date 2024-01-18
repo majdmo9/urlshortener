@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@urlshortener/lib/index";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
 
   if (method !== "GET") {
@@ -33,6 +33,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   res.status(200).json({ name: "majd mousa dev" });
-};
-
-export default handler;
+}

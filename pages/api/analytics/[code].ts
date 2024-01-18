@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@urlshortener/lib/index";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const { method } = req;
   if (method !== "GET") {
     return res.status(400).json({ message: "Only GET methods are allowed!" });
@@ -30,6 +30,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
   }
-};
-
-export default handler;
+}
