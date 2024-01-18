@@ -5,7 +5,7 @@ import { prisma } from "@urlshortener/lib/index";
 
 type RequestData = { url: string };
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
 
   if (method !== "POST") {
@@ -61,4 +61,6 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       code: result?.urlCode,
     } as Record<string, string>,
   });
-}
+};
+
+export default handler;
