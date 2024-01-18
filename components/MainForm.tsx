@@ -70,8 +70,8 @@ const MainForm = () => {
   }, [shortedUrls, urlClicked]);
 
   return (
-    <div className="py-24 min-h-full w-full flex flex-col justify-start items-center">
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white w-full rounded-lg shadow-lg p-4">
+    <div className="py-12 sm:py-24 min-h-full w-full flex flex-col justify-start items-center">
+      <form onSubmit={handleSubmit} className="max-w-sm sm:max-w-md mx-auto bg-white w-full rounded-lg shadow-lg p-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="text">
           Enter Url to short:
         </label>
@@ -90,7 +90,7 @@ const MainForm = () => {
           Submit
         </button>
       </form>
-      <div className="p-12 min-h-96 min-w-full">
+      <div className="p-6 sm:p-12 min-h-96 w-full">
         <Results shortedUrls={shortedUrls} clicks={clicks} handleUrlClicked={handleUrlClicked} handleDelete={handleDelete} />
       </div>
     </div>
