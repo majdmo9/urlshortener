@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Error from "./errors/Error";
 import { ShortedUrlResponseType } from "types/shortUrlType";
 import Results from "./Results";
+import Loader from "./generals/Loading";
 
 const createUrl = async (url: string): Promise<ShortedUrlResponseType | ""> => {
   try {
@@ -26,10 +27,12 @@ const MainForm = () => {
   const [urlClicked, setUrlClicked] = useState(false);
   const [shortedUrls, setShortedUrls] = useState<ShortedUrlResponseType["data"][]>([]);
   const [clicks, setClicks] = useState<{ code: string; clicks: number }[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (url) {
+      setLoading(true);
       const res = await createUrl(url);
       if (res) {
         const { data, error, statusCode } = res;
@@ -46,6 +49,7 @@ const MainForm = () => {
         }
         setUrl("");
       }
+      setLoading(false);
     }
   };
 
@@ -85,9 +89,11 @@ const MainForm = () => {
         {error ? <Error errorMessage={error} /> : <></>}
         <button
           type="submit"
-          className="w-full mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="w-full flex justify-between items-center mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
+          <div />
           Submit
+          {loading ? <Loader /> : <div />}
         </button>
       </form>
       <div className="p-6 sm:p-12 min-h-96 w-full">
