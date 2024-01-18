@@ -5,14 +5,19 @@ import { ShortedUrlResponseType } from "types/shortUrlType";
 import Results from "./Results";
 
 const createUrl = async (url: string): Promise<ShortedUrlResponseType | ""> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/generate`, {
-    method: "POST",
-    body: JSON.stringify({ url }),
-  });
-  if (!res.ok) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/api/generate`, {
+      method: "POST",
+      body: JSON.stringify({ url }),
+    });
+    if (!res.ok) {
+      return "";
+    }
+    return res.json();
+  } catch (err) {
+    console.log(err);
     return "";
   }
-  return res.json();
 };
 
 const MainForm = () => {
